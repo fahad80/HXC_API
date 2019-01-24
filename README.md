@@ -11,8 +11,10 @@
 
 This project uses the HXC Client API to use HXC Client LoRaWAN Module using HXC Client Expansion Board and Nucleo-L053R8 Development Board.
 
+The project uses Mbed OS 2. The Mbed repository is available here: https://os.mbed.com/users/fahadmirza/code/Nucleo_HXC900/
+
 ## System schematic and User Guide
 
-The user guide of the API and the HXC Expansion Board can be found here: https://support.haxiot.com/hc/en-us/articles/360015016132
+The user guide of the API and the HXC Expansion Board can be found here: https://support.haxiot.com/hc/en-us/articles/360015016132 <br>
 You might have to create an account to access the doc.
 
