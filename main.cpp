@@ -42,7 +42,6 @@
   *
   ******************************************************************************
   */
-#include "mbed.h"
 #include "hw.h"
 #include "hxcclient_bsp.h"
 #include "lora_conf.h"
