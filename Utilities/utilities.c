@@ -121,8 +121,6 @@ uint8_t stringHexToByteArray(const char *hexString, uint8_t *buffer, uint8_t buf
         hexString += 2;
     }
 	
-	buffer[count] = '\0';
-	
     return count;
 }
 
