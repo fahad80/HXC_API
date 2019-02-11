@@ -227,7 +227,7 @@ eAtStatus_t  Modem_AT_Cmd(ATGroup_t at_group, ATCmd_t atCmd, void *pdata )
 	uint16_t atCmdLen;
 
 	// Reset At_cmd buffer for each transmission
-	memset1((uint8_t *)AtCmdBuff, 0x00, DATA_TX_MAX_BUFF_SIZE);
+	memset1((uint8_t *)AtCmdBuff, 0x00, sizeof(AtCmdBuff));
 	
 	// Reset the UART circular buffer for each transmission to make sure
 	// the responses we will get are for the current AT cmd.
@@ -459,7 +459,7 @@ static eAtStatus_t at_cmd_receive(void *pdata)
         	        // return value. Copy the return value into pdata.
 
 			        strcpy(pdata, AtResponseBuff);
-			        memset1((uint8_t *)AtResponseBuff, 0x00, AT_RESPONSE_BUFF_SIZE);
+			        memset1((uint8_t *)AtResponseBuff, 0x00, sizeof(AtResponseBuff));
 			        // Now, let's get the status
 		        }
             }
