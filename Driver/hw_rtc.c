@@ -629,14 +629,14 @@ static uint32_t HW_RTC_GetCalendarValue( RTC_DateTypeDef* RTC_DateStruct, RTC_Ti
   /* months (calc valid up to year 2099)*/
   if(( (RTC_DateStruct->Year % 4) == 0 ) )
   {
-    for(i = 0; i < (RTC_DateStruct->Month - 1); i++)
+    for(i = 0; i < (RTC_DateStruct->Month - 1U); i++)
     {
       calendarValue += DaysInMonthLeapYear[i] * SecondsInDay;
     }
   }
   else
   {
-    for( i = 0;  i < ( RTC_DateStruct->Month - 1 ); i++ )
+    for( i = 0;  i < (RTC_DateStruct->Month - 1U); i++ )
     {
       calendarValue += DaysInMonth[i] * SecondsInDay;
     }
