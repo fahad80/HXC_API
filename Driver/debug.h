@@ -67,15 +67,15 @@
 /* Exported macros -----------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */ 
 
-void DBG_Init( void );
+void Debug_Init( void );
 
-void Error_Handler( void );
+void Debug_ErrorHandler( void );
 /**
  * @brief  Sends string on debug com port
  * @param  String
  * @retval None
  */
-void Debug_UART_SendBytes(const char *format, ...);
+void Debug_printf(const char *format, ...);
 void Debug_UART_Init(void);
 
 #ifdef DEBUG
@@ -115,7 +115,7 @@ void Debug_UART_Init(void);
 
 #define DBG( x ) do{  } while(0)
 
-#define DBG_PRINTF(...)           Debug_UART_SendBytes(__VA_ARGS__)
+#define DBG_PRINTF(...)           Debug_printf(__VA_ARGS__)
 
 #define DBG_PRINTF_CRITICAL(...) 
                       

@@ -59,7 +59,7 @@ static char buffTx[256];
   * @param None
   * @retval None
   */
-void DBG_Init( void )
+void Debug_Init( void )
 {
 #ifdef DEBUG
   GPIO_InitTypeDef  gpioinitstruct = {0};
@@ -102,11 +102,11 @@ void DBG_Init( void )
   __GPIOA_CLK_DISABLE();
   
   // ToDo : Code below does something and code wont work. Need to investigate more.
-  //__HAL_RCC_DBGMCU_CLK_ENABLE( );
-  //HAL_DBGMCU_DisableDBGSleepMode( );
-  //HAL_DBGMCU_DisableDBGStopMode( );
-  //HAL_DBGMCU_DisableDBGStandbyMode( );
-  //__HAL_RCC_DBGMCU_CLK_DISABLE( );
+  __HAL_RCC_DBGMCU_CLK_ENABLE( );
+  HAL_DBGMCU_DisableDBGSleepMode( );
+  HAL_DBGMCU_DisableDBGStopMode( );
+  HAL_DBGMCU_DisableDBGStandbyMode( );
+  __HAL_RCC_DBGMCU_CLK_DISABLE( );
 #endif
 
   Debug_UART_Init();
@@ -128,7 +128,7 @@ void Debug_UART_Init(void)
 	HAL_UART_Init(&debugUart);
 }
 
-void Debug_UART_SendBytes(const char *format, ...)
+void Debug_printf(const char *format, ...)
 {
   va_list args;
   static __IO uint16_t len = 0;
@@ -166,7 +166,7 @@ void Debug_UART_SendBytes(const char *format, ...)
   * @param None
   * @retval None
   */
-void Error_Handler( void )
+void Debug_ErrorHandler( void )
 {
   DBG_PRINTF("Error_Handler\n\r");
   while(1);

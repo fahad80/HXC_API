@@ -79,7 +79,8 @@ void HW_Init(void)
   	// Reset of all peripherals, Initializes the Flash interface and the Systick.
     HAL_Init();
     SystemClock_Config();
-    Debug_UART_Init();
+    Debug_Init();
+
     HW_RTC_Init();
     BSP_LED_Init(LED_GREEN);// LED on Nucleo board
     HXC_BSP_Init();
@@ -115,8 +116,8 @@ void SystemClock_Config(void)
     RCC_OscInitStruct.HSI48State = RCC_HSI48_ON;
     if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
     {
-      // Initialization Error
-      Error_Handler();
+    	// Initialization Error
+    	Debug_ErrorHandler();
     }
 
     // Set Voltage scale1 as MCU will run at 32MHz
@@ -134,7 +135,7 @@ void SystemClock_Config(void)
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
     {
-    	Error_Handler();
+    	Debug_ErrorHandler();
     }
 
     HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
