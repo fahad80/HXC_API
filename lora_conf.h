@@ -107,11 +107,12 @@ static uint8_t GetSensorData(uint8_t *buffer, uint8_t bufSize, uint8_t *ack, uin
     // Checkout our user manual to convert tempInt into degree Celcius
     
     
-    buffer[size++] = (uint8_t)Lora_getFwVersion(); // This function returns uint16_t
-    buffer[size++] = Lora_getBatteryLevel();
+
     buffer[size++] = (tempInt >> 8) & 0xFF;
     buffer[size++] = tempInt & 0xFF;
     buffer[size++] = HXC_BSP_GetSlideSwitchStatus();
+    buffer[size++] = Lora_getBatteryLevel();
+    buffer[size++] = (uint8_t)Lora_getFwVersion(); // This function returns uint16_t
     
     *ack = (uint8_t)UNCONFIRMED;
     *port = 2;
